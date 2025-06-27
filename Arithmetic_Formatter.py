@@ -25,19 +25,17 @@ def arithmetic_arranger(problems, show_ans = False):
 
     for i in range(0,len(operations)):
         if operations[i] == '+':
-            second_line += '+ ' + str(num_2[i]) + space
             value.append(str(int(num_1[i]) + int(num_2[i])))
         elif operations[i] == '-':
-            second_line += '- ' + str(num_2[i]) + space
             value.append(str(int(num_1[i]) - int(num_2[i])))
     
     max_length = []
     for i in range(0,len(num_1)):
         max_length.append(max(len(num_1[i]),len(num_2[i]),len(value[i].strip('-'))))
-    print(max_length)
 
     for i in range(0,len(value)):
         first_line += '  ' + (' ' * (int(max_length[i]) - len(num_1[i]))) + str(num_1[i]) + space
+        second_line += str(operations[i]) + ' ' + (' ' * (int(max_length[i]) - len(num_2[i]))) + str(num_2[i]) + space
         third_line += '--' + '-' * int(max_length[i]) + space
         if int(value[i]) > 0:
             fourth_line += '  ' + (' ' * (int(max_length[i]) - len(value[i]))) + str(value[i]) + space
@@ -50,4 +48,4 @@ def arithmetic_arranger(problems, show_ans = False):
         arr_prob = first_line + "\n" + second_line + "\n" + third_line
     return arr_prob
 
-print(f'\n{arithmetic_arranger(["32 + 698", "381 - 2000", "45 + 43", "123 + 49"],True)}')
+print(f'{arithmetic_arranger(["3 + 855", "3801 - 2", "45 + 43", "123 + 49"])}')
