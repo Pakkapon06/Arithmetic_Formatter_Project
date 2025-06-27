@@ -31,21 +31,21 @@ def arithmetic_arranger(problems, show_answers = False):
     
     max_length = []
     for i in range(0,len(num_1)):
-        max_length.append(max(len(num_1[i]),len(num_2[i]),len(value[i].strip('-'))))
+        max_length.append(max(len(num_1[i]),len(num_2[i])))
 
     for i in range(0,len(value)):
         first_line += '  ' + (' ' * (int(max_length[i]) - len(num_1[i]))) + str(num_1[i]) + space
         second_line += str(operations[i]) + ' ' + (' ' * (int(max_length[i]) - len(num_2[i]))) + str(num_2[i]) + space
         third_line += '--' + '-' * int(max_length[i]) + space
         if int(value[i]) > 0:
-            fourth_line += '  ' + (' ' * (int(max_length[i]) - len(value[i]))) + str(value[i]) + space
+            fourth_line += ' ' + (' ' * (int(max_length[i]) - len(value[i]) + 1)) + str(value[i]) + space
         else:
-            fourth_line += ' ' + (' ' * (int(max_length[i]) - len(value[i]))) + str(value[i]) + space
+            fourth_line += ' ' + (' ' * (int(max_length[i]) - len(value[i]) + 1)) + str(value[i]) + space
 
     if show_answers: #combine every line to arr_prob
-        arr_prob = first_line + "\n" + second_line + "\n" + third_line + "\n" + fourth_line
+        arr_prob = first_line.rstrip() + "\n" + second_line.rstrip() + "\n" + third_line.rstrip() + "\n" + fourth_line.rstrip()
     else:
-        arr_prob = first_line + "\n" + second_line + "\n" + third_line
+        arr_prob = first_line.rstrip() + "\n" + second_line.rstrip() + "\n" + third_line.rstrip()
     return arr_prob
 
-print(f'{arithmetic_arranger(["3 + 855", "3801 - 2", "45 + 43", "123 + 49"])}')
+print(f'{arithmetic_arranger(["3 + 855", "988 + 40"], True)}')
