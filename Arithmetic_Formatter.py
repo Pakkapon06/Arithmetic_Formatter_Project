@@ -1,4 +1,4 @@
-def arithmetic_arranger(problems, show_ans = False):
+def arithmetic_arranger(problems, show_answers = False):
     arr_prob = ""
     space = ' ' * 4
     if len(problems) > 5:
@@ -42,7 +42,7 @@ def arithmetic_arranger(problems, show_ans = False):
         else:
             fourth_line += ' ' + (' ' * (int(max_length[i]) - len(value[i]))) + str(value[i]) + space
 
-    if show_ans: #combine every line to arr_prob
+    if show_answers: #combine every line to arr_prob
         arr_prob = first_line + "\n" + second_line + "\n" + third_line + "\n" + fourth_line
     else:
         arr_prob = first_line + "\n" + second_line + "\n" + third_line
