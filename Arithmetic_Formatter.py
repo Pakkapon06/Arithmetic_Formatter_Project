@@ -37,6 +37,7 @@ def arithmetic_arranger(problems, show_ans = False):
     print(max_length)
 
     for i in range(0,len(value)):
+        first_line += '  ' + (' ' * (int(max_length[i]) - len(num_1[i]))) + str(num_1[i]) + space
         third_line += '--' + '-' * int(max_length[i]) + space
         if int(value[i]) > 0:
             fourth_line += '  ' + (' ' * (int(max_length[i]) - len(value[i]))) + str(value[i]) + space
