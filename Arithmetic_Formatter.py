@@ -20,20 +20,28 @@ def arithmetic_arranger(problems, show_ans = False):
     for i in num_1 + num_2:
         if not i.isdigit():
             return 'Error: Numbers must only contain digits.'
+        elif len(i) > 4:
+            return 'Error: Numbers cannot be more than four digits.'
 
-    for i in range(0,len(operations)): #add result to list of value
+    for i in range(0,len(operations)):
         if operations[i] == '+':
             second_line += '+ ' + str(num_2[i]) + space
             value.append(str(int(num_1[i]) + int(num_2[i])))
         elif operations[i] == '-':
             second_line += '- ' + str(num_2[i]) + space
             value.append(str(int(num_1[i]) - int(num_2[i])))
+    
+    max_length = []
+    for i in range(0,len(num_1)):
+        max_length.append(max(len(num_1[i]),len(num_2[i]),len(value[i].strip('-'))))
+    print(max_length)
 
-    for i in value:
-        if int(i) > 0:
-            fourth_line += (' '*2 + i + space)
+    for i in range(0,len(value)):
+        third_line += '--' + '-' * int(max_length[i]) + space
+        if int(value[i]) > 0:
+            fourth_line += '  ' + (' ' * (int(max_length[i]) - len(value[i]))) + str(value[i]) + space
         else:
-            fourth_line += (' ' + i + space)
+            fourth_line += ' ' + (' ' * (int(max_length[i]) - len(value[i]))) + str(value[i]) + space
 
     if show_ans: #combine every line to arr_prob
         arr_prob = first_line + "\n" + second_line + "\n" + third_line + "\n" + fourth_line
@@ -41,4 +49,4 @@ def arithmetic_arranger(problems, show_ans = False):
         arr_prob = first_line + "\n" + second_line + "\n" + third_line
     return arr_prob
 
-print(f'\n{arithmetic_arranger(["32 + 698", "3801 - 20000", "45 + 43", "123 + 49"],True)}')
+print(f'\n{arithmetic_arranger(["32 + 698", "381 - 2000", "45 + 43", "123 + 49"],True)}')
